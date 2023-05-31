@@ -2,13 +2,13 @@
 
 # MTG Autoproxy
 
-MTG Autoproxy is a Python program to automatically generate a vendor-specific list of MTG proxies. The only supported vendor at the moment is Blacklotus [1](https://www.aliexpress.com/item/1005001356681692.html?spm=a2g0o.store_home.productList_1386204970.subject_0), [2](https://docs.google.com/spreadsheets/d/1E2iSRhhNUjaZ3MblXx_rflpOIkMwK40OgX5X6yXE4zw/edit#gid=1033599937).
+MTG Autoproxy is a Python program to automatically generate a vendor-specific list of MTG proxies. Currently, the only supported vendor is Blacklotus [1](https://www.aliexpress.com/item/1005001356681692.html?spm=a2g0o.store_home.productList_1386204970.subject_0), [2](https://docs.google.com/spreadsheets/d/1E2iSRhhNUjaZ3MblXx_rflpOIkMwK40OgX5X6yXE4zw/edit#gid=1033599937).
 
-For example, if you have `Ancient Tomb` in the list of wanted cards, the programm will select the first matching proxy for it (in this case, `Ancient Tomb Korea`)
+For example, if you have `Ancient Tomb` in the list of wanted cards, the program will select the first matching proxy for it (in this case, `Ancient Tomb Korea`) available from the specific vendor.
 
-It support loading a `csv` file from disk (check the `res` folder) or a Google Spreadsheets from a link.
+MTG Autoproxy supports loading of a `csv` file from disk (check the `res` folder) or Google Spreadsheets from a remote link.
 
-The output will be a list of MTG proxies card names complaint with the cards offered by the specific vendor. Additionally, it will generate a `missing.txt` file with the cards that are not available by the seller.
+As output, it generates a `csv` with the list of [card name, set, quantity] matching with the cards offered by the specific vendor. Additionally, it will generate a `missing.txt` file with the cards that were not found.
 
 # Prerequisites
 
