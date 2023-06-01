@@ -24,11 +24,11 @@ As output, it generates a `csv` with the list of [card name, set, quantity] matc
 3. Run `python main.py`.
 4. Check the output in `output/order.csv` and `order/missing.txt`.
 
-# Known Issues
+# Planned Improvements
 
-- Multiple matches might be found for the same card (e.g., Damn matches also Damnation).
-- Lack of customization options (e.g., preferred card art, preferred card language, etc.).
-- Suboptimal search loop.
-- Only 1 vendor supported.
-- No config file ATM. 
+- Avoid multiple matches found for the same card (e.g., Damn matches also Damnation).
+- Add more customization options (e.g., preferred card art, preferred card language, etc.).
+- Improve search loop.
+- Support multiple vendors.
+- Simplify `csv` structure and automate retrieval of vendors's list (have the user write only the wanted cards and quantity).
 
