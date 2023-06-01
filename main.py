@@ -1,11 +1,13 @@
 import time
 import logging
 import config
+import jellyfish
 
 from utils import CardOrder, load_card_list
 
 logging.basicConfig(
-    level=logging.INFO, format="[%(asctime)s]::[%(levelname)s]::%(message)s"
+    level=logging.getLevelName(config.LOG_LEVEL),
+    format="[%(asctime)s]::[%(levelname)s]::%(message)s",
 )
 
 # Vars
@@ -14,21 +16,42 @@ missing = []
 set_counters = {}
 
 
-# TODO: Improve matching logic. Prioritize exact matches?
-def card_lookup(card_name, df_col, set, quantity=1):
+def card_lookup(card_name: str, df_col, set, quantity=1):
     found = False
+    similarity_score = 0
+
     for elem in df_col:
+        skip = False
         if card_name.lower() in elem.lower() and elem.lower().startswith(
             card_name.lower()
         ):
-            to_order.append(CardOrder(elem, col, quantity))
-            if set in set_counters:
-                set_counters[set] += int(quantity)
-            else:
-                set_counters[set] = 1
-            found = True
-            if config.EXIT_AT_FIRST_MATCH:
-                return found
+            tokens_a = card_name.lower().split(" ")
+            tokens_b = elem.lower().split(" ")
+
+            # Priority token matching based on wanted card name
+            # to avoid the "Damn" -> "Damnation" 'cases'.
+            for idx, word_r in enumerate(tokens_a):
+                if word_r != tokens_b[idx]:
+                    skip = True
+
+            if not skip and (
+                jellyfish.jaro_winkler_similarity(card_name.lower(), elem.lower())
+                > similarity_score
+            ):
+                temp_set = set
+                temp_name = elem
+                found = True
+                similarity_score = jellyfish.jaro_winkler_similarity(
+                    card_name.lower(), elem.lower()
+                )
+                logging.debug(f"{card_name} {elem} {similarity_score}")
+
+    if found:
+        to_order.append(CardOrder(temp_name, temp_set, quantity))
+        if set in set_counters:
+            set_counters[set] += int(quantity)
+        else:
+            set_counters[set] = 1
 
     return found
 

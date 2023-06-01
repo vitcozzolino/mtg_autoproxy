@@ -12,3 +12,6 @@ URI = "res/examples.csv"
 # for each card (useful when you want edit manually the output
 # list to select a specific version/art)
 EXIT_AT_FIRST_MATCH = True
+
+# Loggin level
+LOG_LEVEL = "DEBUG"

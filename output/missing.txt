@@ -5,6 +5,7 @@ Etali, Primal conqueror
 Exhume
 Faerie Mastermind
 Faithless Looting
+Flicker
 Hero's Downfall
 Keen Duelist
 Kraum
@@ -12,10 +13,12 @@ Magmatic Sinkhole
 Mizzix's Mastery
 Mnemonic Betrayal
 Neoform
+Nicol Bolas, the Ravager
 Professional Face-Breaker
 Protection Racket
 Ruinous Ultimatum
 Simian Spirit Guide
+Thrasios
 Titania, Voice of Gaea
 Tomb Fortress
 Vohar, Vodalian Desecrator
